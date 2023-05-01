@@ -21,7 +21,6 @@ node_t *head;
 
 void inserting_end(int x);
 void inserting_start(int x);
-void inserting_at_n_position(int x, int position);
 void print_list();
 void reversing_list();
 
@@ -37,7 +36,7 @@ int main(void)
     {
         printf("Enter the number:  \n");
         scanf("%d", &num);
-        inserting_start(num);
+        inserting_end(num);
         print_list();
     }
 
@@ -69,4 +68,27 @@ void inserting_start(int x)
     node->next = head;
 
     head = node;
+}
+
+void inserting_end(int x)
+{
+    node_t *node, *last;
+
+    node = malloc(sizeof(node_t));
+    node->data = x;
+    node->next = NULL;
+
+    if (head == NULL)
+    {
+        head = node;
+    }
+    else
+    {
+        last = head;
+        while (last->next)
+        {
+            last = last->next;
+        }
+        last->next = node;
+    }
 }
